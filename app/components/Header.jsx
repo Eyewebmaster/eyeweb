@@ -13,10 +13,10 @@ import { motion } from "framer-motion";
 const Header = () => {
     const {isDarkMode} = useTheme();
   return (
-    <div className='w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-r'>
-      <div className='flex flex-col items-center justify-center mt-8'>
+    <div className='w-12/12 flex text-center mx-auto h-screen flex flex-col items-center justify-center gap-r'>
+      <div className='w-12/12 flex flex-col items-center justify-center mt-0'>
         <motion.div initial={{scale: 0}} whileInView = {{scale: 1}} transition = {{duration: 0.8, type: 'string'}}>
-        <Image src={assets.profile_img} alt='' className='rounded-full w-42' />
+          <Image src={assets.profile_img} alt='' className='rounded-full w-42' />
         </motion.div>
       </div>
         <h3 className='flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo ' >Hi We are App Developers <Image src={assets.hand_icon} alt='' className='w-15' /></h3>

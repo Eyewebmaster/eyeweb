@@ -31,7 +31,9 @@
   --custom-color-dark-hover: #2a004a;
 }
 
-
+html, body {
+  overflow-x: hidden;
+}
 /*
   Dark mode overrides for your base theme colors.
   These will apply when the `body` has the `theme-dark` class.

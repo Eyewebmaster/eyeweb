@@ -14,7 +14,7 @@ const Work = () => {
             Our Porfolio
         </h4>
         <h2 className='text-center text-5xl font-Ovo'>
-            Our lastest work
+            Our Latest Work
         </h2>
         <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
         Showing you some of our app development porfolio! Explore the collection of projects showcasing our expertise in app, web and front-end development. 

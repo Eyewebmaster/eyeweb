@@ -51,7 +51,7 @@ const Navbar = () => {
     return (
         <>
             {/* Background image conditional on dark mode */}
-            <div className='fixed top-0 right-0 w-12/12 -z-10 translate-y-[-20%]'>
+            <div className='fixed top-0 right-0 -z-10 translate-y-[-20%] '>
                 {!isDarkMode && <Image src={assets.header_bg_color} alt='Background Light' className='w-full' />}
             </div>
 

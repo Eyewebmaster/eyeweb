@@ -13,7 +13,6 @@ export default function TrainingPage() {
 
   return (
     <div>
-      
       <Training/>
       <Training_Content />
       <GraphicsAdsMarketing />
