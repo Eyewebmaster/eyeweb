@@ -14,6 +14,11 @@ async function getPosts() {
   return data.results || [];
 }
 
+export const Metadata = {
+  title: "Cebu Web Developer Blog for Website and Apps",
+  description: "Cebu Full Stack Developer Blog for Website and Apps Development",
+};
+
 export default async function BlogPage() {
   const [categories, posts] = await Promise.all([getCategories(), getPosts()]);
 
