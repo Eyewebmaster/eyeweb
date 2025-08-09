@@ -124,7 +124,7 @@ export default function BlogMegaMenu() {
         >
             <div className={`container mx-auto flex items-center justify-center`}>
                 <span className={megaMenuTriggerClasses}>
-                    Blog
+                    <div className='items-center text-base'>Blog</div>
                     {isMegaMenuOpen ? (
                         <ChevronUpIcon className="h-5 w-5" />
                     ) : (

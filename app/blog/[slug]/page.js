@@ -1,38 +1,77 @@
-import { notFound } from "next/navigation";
-
-async function getPost(slug) {
-  if (!slug) {
-    notFound(); // If slug is missing, show 404 page
-  }
-
-  const res = await fetch(`https://api.eyewebmaster.com/posts/${slug}/`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    notFound(); // API returned 404
-  }
-
-  return res.json();
-}
+import React from 'react';
+import Image from 'next/image';
+import parse from 'html-react-parser';
 
 export default async function BlogPostPage({ params }) {
-  // ✅ Make sure params is awaited in App Router
-  const { slug } = await params;
+  const res = await fetch(`https://api.eyewebmaster.com/api/posts/`, {
+    cache: 'no-store'
+  });
+  const data = await res.json();
 
-  if (!slug) {
-    notFound();
+  const post = data?.results?.find(p => p.slug === params.slug) ?? null;
+
+
+  if (!post) {
+    return (
+      <div className="w-full px-[12%] py-10 scroll-mt-20">
+        <h1 className="text-2xl font-bold">Post not found</h1>
+      </div>
+    );
   }
 
-  const post = await getPost(slug);
+  // Parse HTML and replace <img> tags with Next.js <Image>
+  const contentWithNextImages = parse(post.content, {
+    replace: (domNode) => {
+      if (domNode.name === 'img') {
+        const { src, alt } = domNode.attribs;
+        return (
+          <Image
+            src={src}
+            alt={alt || ''}
+            width={800}
+            height={600}
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
+        );
+      }
+    }
+  });
 
   return (
-    <main className="max-w-3xl mx-auto py-8">
-      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-      <div
-        className="prose"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+    <main className="w-full px-[12%] py-10 scroll-mt-20">
+      {/* Featured Image */}
+      {post.featured_image && (
+        <Image
+          src={post.featured_image}
+          alt={post.title}
+          width={1200}
+          height={600}
+          className="w-3xl rounded-xl mb-6 items-center mt-10"
+        />
+      )}
+
+      {/* Title */}
+      <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+
+      {/* Categories */}
+      {post.categories && post.categories.length > 0 && (
+        <div className="flex gap-2 mb-4 flex-wrap">
+          {post.categories.map((cat, index) => (
+            <span
+              key={index}
+              className="bg-blue-100 text-blue-800 px-3 py-1 text-sm rounded-full"
+            >
+              {cat.name}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Date */}
+      <p className="text-gray-500 text-sm mb-6">{post.date || ''}</p>
+
+      {/* Content */}
+      <div className="prose prose-lg max-w-none">{contentWithNextImages}</div>
     </main>
   );
 }
