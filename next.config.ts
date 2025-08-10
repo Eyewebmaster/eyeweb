@@ -7,18 +7,24 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'api.eyewebmaster.com',
         port: '',
-        pathname: '/media/posts/**',
+        pathname: '/media/**',
       },
       {
-        protocol: 'https',
+        protocol: 'http',
         hostname: 'api.eyewebmaster.com',
       },
       {
         protocol: 'http', // Allow old http images too
         hostname: 'www.eyewebmaster.com',
-      },      
+        pathname: '/**',
+      },    
+      {
+        protocol: 'https', 
+        hostname: 'www.eyewebmaster.com',
+        pathname: '/**',
+      },    
     ],
   },
 };
-
+module.exports = nextConfig;
 export default nextConfig;

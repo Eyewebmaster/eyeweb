@@ -79,9 +79,10 @@ const Contact = () => {
 
         <button
             type="submit"
+            aria-label='Submit Now'
             className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/70 text-white rounded-full mx-auto hover:bg-black duration-500 dark:hover:bg-white/50"
         >
-            Submit now <Image src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_white} alt="" className="w-4"  />
+            Submit now <Image src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_white} alt="button" className="w-4"  />
         </button>
 
         <p className="mt-4">{result}</p>

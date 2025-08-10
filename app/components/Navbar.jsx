@@ -57,7 +57,7 @@ const Navbar = () => {
 
             <nav className={`w-full fixed px-5 lg:px-4 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-gray-800" : ""}`} >
                 <Link href="/">
-                    <Image src={assets.logo} alt="Eyewebmaster" className='w-55 cursor-pointer' />
+                    <Image src={assets.logo} alt="Eyewebmaster Logo" className='w-55 cursor-pointer' />
                 </Link>
 
                 {/* Desktop Menu */}

@@ -22,7 +22,7 @@ export default async function BlogPostPage({ params }) {
   // Parse HTML and replace <img> tags with Next.js <Image>
   const contentWithNextImages = parse(post.content, {
     replace: (domNode) => {
-      if (domNode.name === 'img') {
+      if (domNode.type === 'tag' && domNode.name === 'img') {
         const { src, alt } = domNode.attribs;
         return (
           <Image
